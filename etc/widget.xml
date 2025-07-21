@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:MageOS_PageBuilderWidget:etc/widget.xsd">
+
+    <widget id="magelearn_markers_widget" class="Dadolun\MarkersWidget\Block\Widget" is_enabled="true">
+        <label translate="true">Markers Widget</label>
+        <description translate="true">Widget con tre marker configurabili</description>
+
+        <parameters>
+            <parameter name="title_1" xsi:type="text" sort_order="10" visible="true">
+                <label translate="true">Marker 1 Title</label>
+            </parameter>
+            <parameter name="desc_1" xsi:type="textarea" sort_order="20" visible="true">
+                <label translate="true">Marker 1 Description</label>
+            </parameter>
+            <parameter name="img_1" xsi:type="text" sort_order="30" visible="true">
+                <label translate="true">Marker 1 Image</label>
+            </parameter>
+            <parameter name="left_1" xsi:type="text" sort_order="40" visible="true">
+                <label translate="true">Marker 1 Left Position</label>
+            </parameter>
+            <parameter name="top_1" xsi:type="text" sort_order="50" visible="true">
+                <label translate="true">Marker 1 Top Position</label>
+            </parameter>
+
+            <parameter name="title_2" xsi:type="text" sort_order="60" visible="true">
+                <label translate="true">Titolo Marker 2</label>
+            </parameter>
+            <parameter name="desc_2" xsi:type="textarea" sort_order="70" visible="true">
+                <label translate="true">Descrizione Marker 2</label>
+            </parameter>
+            <parameter name="img_2" xsi:type="text" sort_order="80" visible="true">
+                <label translate="true">Immagine Marker 2</label>
+            </parameter>
+            <parameter name="left_2" xsi:type="text" sort_order="90" visible="true">
+                <label translate="true">Marker 1 Left Position</label>
+            </parameter>
+            <parameter name="top_2" xsi:type="text" sort_order="100" visible="true">
+                <label translate="true">Marker 1 Top Position</label>
+            </parameter>
+
+            <parameter name="title_3" xsi:type="text" sort_order="110" visible="true">
+                <label translate="true">Titolo Marker 3</label>
+            </parameter>
+            <parameter name="desc_3" xsi:type="textarea" sort_order="120" visible="true">
+                <label translate="true">Descrizione Marker 3</label>
+            </parameter>
+            <parameter name="img_3" xsi:type="text" sort_order="130" visible="true">
+                <label translate="true">Immagine Marker 3</label>
+            </parameter>
+            <parameter name="left_3" xsi:type="text" sort_order="140" visible="true">
+                <label translate="true">Marker 1 Left Position</label>
+            </parameter>
+            <parameter name="top_3" xsi:type="text" sort_order="150" visible="true">
+                <label translate="true">Marker 1 Top Position</label>
+            </parameter>
+
+            <parameter name="template" xsi:type="select" required="true" visible="false">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="Dadolun_MarkersWidget::widget.phtml" selected="true">
+                        <label translate="true">Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+
+        <previewTemplates>
+            <previewTemplate name="Dadolun_MarkersWidget::widget.phtml" xsi:type="string">Dadolun_MarkersWidget::widget-preview.phtml</previewTemplate>
+        </previewTemplates>
+
+    </widget>
+
+</widgets>

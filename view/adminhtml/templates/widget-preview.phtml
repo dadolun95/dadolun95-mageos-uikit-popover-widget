@@ -1,0 +1,81 @@
+<?php
+$markers = [];
+$id = uniqid();
+for ($i = 1; $i <= 3; $i++) {
+    $title = $block->getData("title_$i");
+    $desc = $block->getData("desc_$i");
+    $img = $block->getData("img_$i");
+    $left = (int) $block->getData("left_$i");
+    $top = (int) $block->getData("top_$i");
+    $markers[] = [
+        'title' => $title,
+        'desc' => $desc,
+        'img' => $img,
+        'alt' => $title,
+        'left' => $left . "%",
+        'top' => $top . "%"
+    ];
+}
+?>
+
+<div id="preview-<?= $id; ?>"></div>
+<script type="text/javascript">
+    if (typeof window.shadowHostMarkers !== "undefined") {
+        window.shadowHostMarkers.cloneNode(false);
+    }
+
+    window.shadowHostMarkers = document.getElementById('preview-<?= $id; ?>');
+    window.shadowHostMarkers.replaceWith(window.shadowHostMarkers);
+    window.shadowRootMarkers = window.shadowHostMarkers.attachShadow({mode: 'open'});
+
+
+    window.markersPreviewContent = document.createElement('div');
+    window.markersPreviewContent.innerHTML = `
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.11/dist/css/uikit.min.css" />
+
+    <div class="uk-position-relative uk-display-inline-block">
+        <img src="https://demo.yootheme.com/demo/widgetkit/images/widgets-bicycle-01.png" alt="">
+        <?php foreach ($markers as $index => $marker): ?>
+        <div class="uk-position-absolute uk-visible@s" style="left: <?= $marker['left'] ?>; top: <?= $marker['top'] ?>">
+            <a href class="uk-icon uk-marker">
+                <svg width="20" height="20" viewBox="0 0 20 20"><rect width="1" height="11" x="9" y="4"></rect><rect width="11" height="1" x="4" y="9"></rect></svg>
+            </a>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="uk-margin uk-hidden@s">
+        <ul class="uk-switcher" id="markers-switcher-<?= $id ?>">
+            <?php foreach ($markers as $index => $marker): ?>
+            <li>
+                <div class="uk-card uk-card-primary uk-transition-toggle uk-text-left">
+                    <a class="uk-position-cover uk-position-z-index" href="#popover" title="#popover"></a>
+                    <div class="uk-card-media-top uk-text-center">
+                        <div class="uk-inline-clip">
+                            <img src="<?= $block->escapeUrl($marker['img']) ?>" class="uk-transition-scale-up uk-transition-opaque" alt="Handlebar">
+                            <div class="uk-overlay-primary uk-position-cover uk-transition-fade">
+                                <div class="uk-position-center">
+                                    <span class="" uk-overlay-icon></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-h3 uk-margin-remove-top">
+                            <a class="uk-link-reset" href="#popover"><?= $block->escapeUrl($marker['title']) ?></a>
+                        </h3>
+                        <div class="uk-margin"><?= $block->escapeUrl($marker['desc']) ?></div>
+                    </div>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        <ul class="uk-dotnav uk-flex-center uk-margin" uk-switcher="connect: #markers-switcher-<?= $id ?>; animation: uk-animation-fade;">
+            <?php foreach ($markers as $index => $marker): ?>
+            <li><a href="#"></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+  `;
+    window.shadowRootMarkers.appendChild(window.markersPreviewContent);
+</script>

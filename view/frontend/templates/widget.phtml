@@ -1,0 +1,77 @@
+<?php
+$markers = [];
+$id = uniqid();
+
+for ($i = 1; $i <= 3; $i++) {
+    $title = $block->getData("title_$i");
+    $desc = $block->getData("desc_$i");
+    $img = $block->getData("img_$i");
+    $left = $block->getData("left_$i");
+    $top = $block->getData("top_$i");
+    $markers[] = [
+        'title' => $title,
+        'desc' => $desc,
+        'img' => $img,
+        'alt' => $title,
+        'left' => $left . "%",
+        'top' => $top . "%"
+    ];
+}
+?>
+
+<div class="uk-position-relative uk-display-inline-block">
+    <img src="https://demo.yootheme.com/demo/widgetkit/images/widgets-bicycle-01.png" alt="">
+    <?php foreach ($markers as $index => $marker): ?>
+        <div class="uk-position-absolute uk-visible@s" style="left: <?= $marker['left'] ?>; top: <?= $marker['top'] ?>">
+            <a href uk-marker></a>
+            <div class="uk-drop" style="width:300px;" uk-drop="pos: right-center;mode: click,click">
+                <div class="uk-card uk-card-primary uk-transition-toggle uk-text-left">
+                    <a class="uk-position-cover uk-position-z-index" href="#popover" title="#popover"></a>
+                    <div class="uk-card-media-top uk-text-center">
+                        <div class="uk-inline-clip">
+                            <img src="<?= $block->escapeUrl($marker['img']) ?>" alt="<?= $block->escapeHtmlAttr($marker['alt']) ?>" class="uk-transition-scale-up uk-transition-opaque" />
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-h3 uk-margin-remove-top">
+                            <a class="uk-link-reset" href="#popover"><?= $block->escapeHtml($marker['title']) ?></a>
+                        </h3>
+                        <div class="uk-margin"><?= $block->escapeHtml($marker['desc']) ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+<div class="uk-margin uk-hidden@s">
+    <ul class="uk-switcher" id="markers-switcher-<?= $id ?>">
+        <?php foreach ($markers as $index => $marker): ?>
+        <li>
+            <div class="uk-card uk-card-primary uk-transition-toggle uk-text-left">
+                <a class="uk-position-cover uk-position-z-index" href="#popover" title="#popover"></a>
+                <div class="uk-card-media-top uk-text-center">
+                    <div class="uk-inline-clip">
+                        <img src="<?= $block->escapeUrl($marker['img']) ?>" class=" uk-transition-scale-up uk-transition-opaque" alt="Handlebar">
+                        <div class="uk-overlay-primary uk-position-cover uk-transition-fade">
+                            <div class="uk-position-center">
+                                <span class="" uk-overlay-icon></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <h3 class="uk-h3 uk-margin-remove-top">
+                        <a class="uk-link-reset" href="#popover"><?= $block->escapeUrl($marker['title']) ?></a>
+                    </h3>
+                    <div class="uk-margin"><?= $block->escapeUrl($marker['desc']) ?></div>
+                </div>
+            </div>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <ul class="uk-dotnav uk-flex-center uk-margin" uk-switcher="connect: #markers-switcher-<?= $id ?>; animation: uk-animation-fade;">
+        <?php foreach ($markers as $index => $marker): ?>
+        <li><a href="#"></a></li>
+        <?php endforeach; ?>
+    </ul>
+</div>

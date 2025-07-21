@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:MageOS_UIkitTheme:etc/uikit_whitelist.xsd">
+    <paths>
+        <path name="dadolun_markers-widget" xsi:type="string" >app/code/Dadolun/MarkersWidget</path>
+    </paths>
+</config>
