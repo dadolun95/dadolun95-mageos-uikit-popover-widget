@@ -11,12 +11,15 @@ This is a demonstration test for all the mage-os stuff realized until today ( Ju
 Component tested: https://demo.yootheme.com/joomla/widgetkit/uikit/home/popover#popover
 
 Adminhtml preview:
+
 ![adminhtml-preview.png](adminhtml-preview.png)
 
 Desktop frontend result:
+
 ![desktop-frontend.png](desktop-frontend.png)
 
 Mobile frontend result:
+
 ![mobile-frontend.png](mobile-frontend.png)
 
 
